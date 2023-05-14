@@ -1,94 +1,115 @@
 import React, { useState, useEffect, useContext } from 'react';
-
 import { styled, Box, TextareaAutosize, Button, InputBase, FormControl } from '@mui/material';
 import { AddCircle as Add } from '@mui/icons-material';
 import { useNavigate, useLocation } from 'react-router-dom';
-
 import { API } from '../../service/api';
 import { DataContext } from '../../context/DataProvider';
 
 const Container = styled(Box)(({ theme }) => ({
-    margin: '50px 100px',
-    [theme.breakpoints.down('md')]: {
-        margin: 0
-    }
+  margin: '50px 100px',
+  [theme.breakpoints.down('md')]: {
+    margin: 0
+  },
+  backgroundColor: '#F5F5F5',
+  borderRadius: '10px',
+  padding: '30px'
 }));
 
 const Image = styled('img')({
-    width: '100%',
-    height: '50vh',
-    objectFit: 'cover'
+  width: '100%',
+  height: '50vh',
+  objectFit: 'cover',
+  borderRadius: '10px',
+  marginBottom: '30px'
 });
 
 const StyledFormControl = styled(FormControl)`
-    margin-top: 10px;
-    display: flex;
-    flex-direction: row;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
 `;
 
 const InputTextField = styled(InputBase)`
-    flex: 1;
-    margin: 0 30px;
-    font-size: 25px;
+  flex: 1;
+  margin: 0 30px;
+  font-size: 25px;
+  background-color: #E6F4F1; /* Couleur de fond bleu calme */
+  border-radius: 10px;
+  padding: 10px;
 `;
 
 const Textarea = styled(TextareaAutosize)`
-    width: 100%;
-    border: none;
-    margin-top: 50px;
-    font-size: 18px;
-    &:focus-visible {
-        outline: none;
-    }
+  width: 100%;
+  border: none;
+  margin-top: 30px;
+  font-size: 18px;
+  padding: 10px;
+  background-color: #E6F4F1; /* Couleur de fond bleu calme */
+  border-radius: 10px;
+  &:focus-visible {
+    outline: none;
+  }
+`;
+
+const PublishButton = styled(Button)`
+  background-color: #6BB9C8;
+  color: white;
+  margin-left: 20px;
+  &:hover {
+    background-color: #56A3AE;
+  }
 `;
 
 const initialPost = {
-    title: '',
-    description: '',
-    picture: '',
-    username: '',
-    categories: '',
-    createdDate: new Date()
+  title: '',
+  description: '',
+  picture: '',
+  username: '',
+  categories: '',
+  createdDate: new Date()
 }
 
 const CreatePost = () => {
-    const navigate = useNavigate();
-    const location = useLocation();
+  const navigate = useNavigate();
+  const location = useLocation();
 
-    const [post, setPost] = useState(initialPost);
-    const [file, setFile] = useState('');
-    const { account } = useContext(DataContext);
+  const [post, setPost] = useState(initialPost);
+  const [file, setFile] = useState('');
+  const { account } = useContext(DataContext);
 
-    const url = post.picture ? post.picture : 'https://images.unsplash.com/photo-1543128639-4cb7e6eeef1b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wJTIwc2V0dXB8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80';
+  const url = post.picture ? post.picture : 'https://www.rustica.fr/images/meditation-l870-h630.jpg';
 
-    useEffect(() => {
-        const getImage = async () => {
-            if (file) {
-                const data = new FormData();
-                data.append("name", file.name);
-                data.append("file", file);
+  useEffect(() => {
+    const getImage = async () => {
+      if (file) {
+        const data = new FormData();
+        data.append("name", file.name);
+        data.append("file", file);
 
-                const response = await API.uploadFile(data);
-                post.picture = response.data;
-            }
-        }
-        getImage();
-        post.categories = location.search?.split('=')[1] || 'All';
-        post.username = account.username;
-    }, [file])
-
-    const savePost = async () => {
-        await API.createPost(post);
-        navigate('/');
+        const response = await API.uploadFile(data);
+        post.picture = response.data;
+      }
     }
+    getImage();
+    post.categories = location.search?.split('=')[1] || 'All';
+    post.username = account.username;
+  }, [file])
 
-    const handleChange = (e) => {
-        setPost({ ...post, [e.target.name]: e.target.value });
-    }
+  const savePost = async () => {
+    await API.createPost(post);
+    navigate('/');
+  }
 
-    return (
-        <Container>
-            <Image src={url} alt="post" />
+  const handleChange = (e) => {
+    setPost({ ...post, [e.target.name]: e.target.value });
+  }
+
+  return (
+    <Container>
+      <Image src={url} alt="post" />
+
+     
+
 
             <StyledFormControl>
                 <label htmlFor="fileInput">
