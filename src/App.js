@@ -10,7 +10,7 @@ import Home from './components/home/Home';
 import CreatePost from './components/create/CreatePost';
 import DetailView from './components/details/DetailView';
 import Update from './components/create/Update';
-import About from './components/about/About';
+import Profile from './components/profile/profile';
 import Contact from './components/contact/Contact';
 import Login from './components/account/Login';
 
@@ -50,8 +50,8 @@ function App() {
               <Route path='/update/:id' element={<Update />} />
             </Route>
 
-            <Route path='/about' element={<PrivateRoute isAuthenticated={isAuthenticated} />} >
-              <Route path='/about' element={<About />} />
+            <Route path='/profile' element={<PrivateRoute isAuthenticated={isAuthenticated} />} >
+              <Route path='/profile' element={<Profile />} />
             </Route>
 
             <Route path='/contact' element={<PrivateRoute isAuthenticated={isAuthenticated} />} >
