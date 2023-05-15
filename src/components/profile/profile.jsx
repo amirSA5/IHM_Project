@@ -39,15 +39,6 @@ const Profile = () => {
                       />
                     </div>
                     <h5 class="user-name">Omar Talbi</h5>
-                    <h6 class="user-email">
-                      <a
-                        href="/cdn-cgi/l/email-protection"
-                        class="__cf_email__"
-                        data-cfemail="671e120c0e272a061f10020b0b4904080a"
-                      >
-                        [email&#160;protected]
-                      </a>
-                    </h6>
                   </div>
                   <div class="about">
                     <h5>About</h5>
@@ -106,19 +97,12 @@ const Profile = () => {
                           Select user profile type anonymous or public
                         </label>
                       </div>
-                      <div class="col-12 align-items-center">
-                        <div id="app-cover">
-                          <div class="row">
-                            <div class="toggle-button-cover">
-                              <div class="button r" id="button-1">
-                                <input type="checkbox" class="checkbox" />
-                                <div class="knobs"></div>
-                                <div class="layer"></div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                     <div className="row p-5 justify-content-space-around">
+                     <label class="switch " >
+                        <input type="checkbox"/>
+                        <span class="slider"></span>
+                      </label>
+                     </div>
                     </div>
                   </div>
                 </div>
