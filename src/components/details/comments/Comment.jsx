@@ -7,10 +7,37 @@ import { API } from '../../../service/api';
 import { DataContext } from "../../../context/DataProvider";
 
 const Component = styled(Box)`
-    margin-top: 30px;
-    background: #F5F5F5;
-    padding: 10px;
+  margin-top: 30px;
+  background-color: #d3e3eb;
+  padding: 10px;
+  border-radius: 20px;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -20px;
+    transform: translateY(-50%);
+    border-top: 10px solid transparent;
+    border-right: 20px solid #d3e3eb;
+    border-bottom: 10px solid transparent;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -20px;
+    transform: translateY(-50%);
+    border-top: 10px solid transparent;
+    border-left: 20px solid #e6f2ff;
+    border-bottom: 10px solid transparent;
+  }
 `;
+
+
+
 
 const Container = styled(Box)`
     display: flex;
@@ -18,15 +45,36 @@ const Container = styled(Box)`
 `;
 
 const Name = styled(Typography)`
+    font-weight: bold;
     font-weight: 600,
     font-size: 18px;
     margin-right: 20px;
 `;
 
+
+
 const StyledDate = styled(Typography)`
-    font-size: 14px;
-    color: #878787;
+  font-size: 14px;
+  font-weight: bold;
+  color: #4f5d75;
+  position: relative;
+  display: inline-block;
+  padding: 0 5px;
+  margin-right: 10px;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -10px;
+    width: 6px;
+    height: 6px;
+    background-color: #4f5d75;
+    border-radius: 50%;
+    transform: translateY(-50%);
+  }
 `;
+
 
 const DeleteIcon = styled(Delete)`
     margin-left: auto;

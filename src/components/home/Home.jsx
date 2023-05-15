@@ -9,13 +9,14 @@ import Posts from './post/Posts';
 
 const useStyles = makeStyles({
   container: {
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#f9f9f9',
     paddingTop: '40px',
   },
   banner: {
     marginTop: 0,
   },
 });
+
 
 const Home = () => {
   const classes = useStyles();

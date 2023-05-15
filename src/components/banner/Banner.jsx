@@ -12,7 +12,7 @@ const images = [
   },
   {
     url: 'https://images.pexels.com/photos/6335/man-coffee-cup-pen.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    title: 'professionnel life',
+    title: 'Professional Life',
   },
   {
     url: 'https://images.pexels.com/photos/4218580/pexels-photo-4218580.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
@@ -28,7 +28,7 @@ const Slideshow = styled(Box)`
 position: relative;
 top: 0;
 left: 0;
-height: 50vh;
+height: 60vh;
 width: 100%;
 
 
@@ -54,7 +54,7 @@ const Title = styled(Typography)`
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 10px;
-  font-family:"Stencil Std, fantasy	";
+  font-family:"Poppins";
   font-size: 70px;
   font-weight: 900;
   color: #fff; /* Utilisez la couleur blanche (#fff) */
@@ -89,7 +89,7 @@ const Banner = () => {
   }, []);
 
   return (
-    <Box sx={{ marginTop: 0, margin: 0 }}>
+    <Box sx={{ marginTop: 0, margin: -5}}>
       <Slideshow>
         {images.map((image, index) => (
           <Slide key={index} active={index === activeIndex} url={image.url}>

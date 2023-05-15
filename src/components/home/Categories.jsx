@@ -18,11 +18,8 @@ const StyledLink = styled(Link)`
   padding: 10px;
   border-radius: 5px;
 
-
-  
-  transition: background-color 0.3s ease-in-out;
-
   &:hover {
+    text-decoration: none;
     background-color: #d2e2f5;
     transform: scale(1.05);
   }

@@ -7,69 +7,167 @@ import { API } from '../../service/api';
 import { DataContext } from '../../context/DataProvider';
 
 const Component = styled(Box)`
-    width: 400px;
-    margin: auto;
-    box-shadow: 5px 2px 5px 2px rgb(0 0 0/ 0.6);
+  width: 400px;
+  margin: auto;
+  box-shadow: 5px 2px 5px 2px rgba(0, 0, 0, 0.6);
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.5s ease-in-out;
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 `;
 
-const Image = styled('img')({
-    width: 100,
-    display: 'flex',
-    margin: 'auto',
-    padding: '50px 0 0'
-});
+const Image = styled('img')`
+  width: 100%;
+  max-width: 200px;
+  margin: 20px auto;
+  display: block;
+  animation: scaleIn 0.5s ease-in-out;
+
+  @keyframes scaleIn {
+    0% {
+      transform: scale(0);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+`;
 
 const Wrapper = styled(Box)`
-    padding: 25px 35px;
-    display: flex;
-    flex: 1;
-    overflow: auto;
-    flex-direction: column;
-    & > div, & > button, & > p {
-        margin-top: 20px;
+  padding: 25px 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: slideIn 0.5s ease-in-out;
+
+  @keyframes slideIn {
+    0% {
+      transform: translateY(-50px);
     }
+    50% {
+      transform: translateY(25px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  & > div,
+  & > button,
+  & > p {
+    margin-top: 20px;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in-out forwards;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 `;
 
 const LoginButton = styled(Button)`
-    text-transform: none;
-    background: #FB641B;
-    color: #fff;
-    height: 48px;
-    border-radius: 2px;
+  text-transform: none;
+  background-color: #00BFFF;
+  color: #fff;
+  height: 48px;
+  border-radius: 2px;
+  animation: fadeIn 0.5s ease-in-out;
+
+  &:hover {
+    background-color: #1a237e;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 `;
 
 const SignupButton = styled(Button)`
-    text-transform: none;
-    background: #fff;
-    color: #2874f0;
-    height: 48px;
-    border-radius: 2px;
-    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);
+  text-transform: none;
+  background-color: #fff;
+  color: #3f51b5;
+  height: 48px;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.5s ease-in-out;
+
+  &:hover {
+    background-color: #B0E0E6;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 `;
 
 const Text = styled(Typography)`
-    color: #878787;
-    font-size: 12px;
+  color: #555;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 10px;
 `;
 
 const Error = styled(Typography)`
-    font-size: 10px;
-    color: #ff6161;
-    line-height: 0;
-    margin-top: 10px;
-    font-weight: 600;
-`
+  font-size: 14px;
+  color: #ff6161;
+  line-height: 0;
+  margin-top: 10px;
+  font-weight: 600;
+  text-align: center;
+`;
 
 const loginInitialValues = {
-    username: '',
-    password: ''
+  username: '',
+  password: ''
 };
 
 const signupInitialValues = {
-    name: '',
-    username: '',
-    password: '',
+  name: '',
+  username: '',
+  password: '',
 };
+
+
+
 
 const Login = ({ isUserAuthenticated }) => {
     const [login, setLogin] = useState(loginInitialValues);
@@ -80,7 +178,7 @@ const Login = ({ isUserAuthenticated }) => {
     const navigate = useNavigate();
     const { setAccount } = useContext(DataContext);
 
-    const imageURL = 'https://www.sesta.it/wp-content/uploads/2021/03/logo-blog-sesta-trasparente.png';
+    const imageURL = 'https://cdn.pixabay.com/photo/2022/12/10/13/46/attack-7647136_1280.png';
 
     useEffect(() => {
         showError(false);

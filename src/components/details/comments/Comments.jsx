@@ -4,14 +4,19 @@ import { Box, TextareaAutosize, Button, styled } from '@mui/material';
 import { DataContext } from '../../../context/DataProvider';
 
 import { API } from '../../../service/api';
+import SendIcon from '@mui/icons-material/Send';
+
 
 //components
 import Comment from './Comment';
+
+
 
 const Container = styled(Box)`
     margin-top: 100px;
     display: flex;
 `;
+
 
 const Image = styled('img')({
     width: 50,
@@ -20,10 +25,29 @@ const Image = styled('img')({
 });
 
 const StyledTextArea = styled(TextareaAutosize)`
-    height: 100px !important;
-    width: 100%; 
-    margin: 0 20px;
+  height: 100px !important;
+  width: 100%; 
+  margin: 0 20px;
+  background-color: #F0F0F0;
+  border-radius: 999px; /* Donne la forme de bulle */
+  border: 1px solid #ccc; /* Ajoute une bordure */
+  padding: 10px; /* Ajoute de l'espace autour du texte */
 `;
+
+const CustomSendIcon = styled(SendIcon)({
+    color: '#0084ff',
+    fontSize: '24px',
+    transition: 'all 0.2s ease-in-out',
+    cursor: 'pointer',
+    '&:hover': {
+      transform: 'scale(1.2)',
+      backgroundColor: '#3a8eba',
+      color: '#ffffff',
+    },
+  });
+  
+  
+  
 
 const initialValue = {
     name: '',
@@ -33,7 +57,7 @@ const initialValue = {
 }
 
 const Comments = ({ post }) => {
-    const url = 'https://static.thenounproject.com/png/12017-200.png'
+    const url = 'https://us.123rf.com/450wm/ahasoft2000/ahasoft20001801/ahasoft2000180119943/94542989-pictogramme-raster-de-nerd-man-le-style-est-symbole-graphique-plat-bicolore-couleurs-bleu-et-gris.jpg?ver=6'
 
     const [comment, setComment] = useState(initialValue);
     const [comments, setComments] = useState([]);
@@ -76,13 +100,14 @@ const Comments = ({ post }) => {
                     onChange={(e) => handleChange(e)}
                     value={comment.comments}
                 />
-                <Button
-                    variant="contained"
-                    color="primary"
-                    size="medium"
-                    style={{ height: 40 }}
-                    onClick={(e) => addComment(e)}
-                >Post</Button>
+              <Button
+    
+    color="primary"
+    size="medium"
+    style={{ height: 100 }}
+    onClick={(e) => addComment(e)}
+    startIcon={<CustomSendIcon />}
+></Button>
             </Container>
             <Box>
                 {

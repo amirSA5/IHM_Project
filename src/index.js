@@ -8,7 +8,7 @@ import Contact from './components/contact/Contact';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Contact />
+    <App />
   </React.StrictMode>
 );
 

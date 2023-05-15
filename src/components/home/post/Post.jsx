@@ -1,4 +1,3 @@
-
 import { styled, Box, Typography } from '@mui/material';
 
 
@@ -10,35 +9,70 @@ const Container = styled(Box)`
     align-items: center;
     flex-direction: column;
     height: 350px;
+    padding: 10px;
+    background-color: #e6f1f8;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+
     & > img, & > p {
         padding: 0 5px 5px 5px;
     }
+
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover {
+        background-color: #d2e2f5;
+        transform: scale(1.05);
+    }
 `;
 
+
 const Image = styled('img')({
-    width: '100%',
+    width: '60%',
     objectFit: 'cover',
-    borderRadius: '10px 10px 0 0',
-    height: 150
+    borderRadius: '60%',
+    height: 150,
+    transition: 'transform 0.2s ease-in-out',
+
+    '&:hover': {
+        transform: 'scale(1.05)',
+    },
 });
 
 const Text = styled(Typography)`
-    color: #878787
-    font-size: 12px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #424242;
+    letter-spacing: 0.5px;
+    line-height: 1.5;
+    animation: fadeIn 0.5s ease-in-out;
 `;
 
 const Heading = styled(Typography)`
-    font-size: 18px;
-    font-weight: 600
+    font-size: 24px;
+    font-weight: 600;
+    font-family: poppins;
+    margin-top: 10px;
+    color: #212121;
+    letter-spacing: 0.5px;
+    line-height: 1.5;
+    animation: slideInFromLeft 0.5s ease-in-out;
 `;
 
 const Details = styled(Typography)`
-    font-size: 14px;
-    word-break: break-word;
+    font-size: 16px;
+    font-weight: 400;
+    color: #757575;
+    letter-spacing: 0.5px;
+    line-height: 1.5;
+    animation: slideInFromRight 0.5s ease-in-out;
 `;
 
+
+
+
+
 const Post = ({ post }) => {
-    const url = post.picture ? post.picture : 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=752&q=80';
+    const url = post.picture ? post.picture : 'https://cdn-icons-png.flaticon.com/512/326/326020.png';
 
     const addEllipsis = (str, limit) => {
         return str.length > limit ? str.substring(0, limit) + '...' : str;

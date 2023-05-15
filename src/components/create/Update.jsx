@@ -9,37 +9,55 @@ import { API } from '../../service/api';
 const Container = styled(Box)(({ theme }) => ({
     margin: '50px 100px',
     [theme.breakpoints.down('md')]: {
-        margin: 0
-    }
-}));
+      margin: 0
+    },
+    backgroundColor: '#F5F5F5',
+    borderRadius: '10px',
+    padding: '30px'
+  }));
 
-const Image = styled('img')({
+
+  const Image = styled('img')({
     width: '100%',
     height: '50vh',
-    objectFit: 'cover'
-});
+    objectFit: 'cover',
+    borderRadius: '10px',
+    marginBottom: '30px'
+  });
 
-const StyledFormControl = styled(FormControl)`
-    margin-top: 10px;
-    display: flex;
-    flex-direction: row;
+
+
+  const StyledFormControl = styled(FormControl)`
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
 `;
+
 
 const InputTextField = styled(InputBase)`
-    flex: 1;
-    margin: 0 30px;
-    font-size: 25px;
+  flex: 1;
+  margin: 0 30px;
+  font-size: 25px;
+  background-color: #E6F4F1; /* Couleur de fond bleu calme */
+  border-radius: 10px;
+  padding: 10px;
 `;
 
+
 const StyledTextArea = styled(TextareaAutosize)`
-    width: 100%;
-    border: none;
-    margin-top: 50px;
-    font-size: 18px;
-    &:focus-visible {
-        outline: none;
-    }
+  width: 100%;
+  border: none;
+  margin-top: 30px;
+  font-size: 18px;
+  padding: 10px;
+  background-color: #E6F4F1; /* Couleur de fond bleu calme */
+  border-radius: 10px;
+  &:focus-visible {
+    outline: none;
+  }
 `;
+
+
 
 const initialPost = {
     title: '',
@@ -59,7 +77,7 @@ const Update = () => {
 
     const { id } = useParams();
 
-    const url = 'https://images.unsplash.com/photo-1543128639-4cb7e6eeef1b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wJTIwc2V0dXB8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80';
+    const url = 'https://img.freepik.com/vecteurs-libre/groupe-garcon-fille-debout-levant-main-tete-expression-interrogative_1150-63845.jpg?w=996&t=st=1684159840~exp=1684160440~hmac=0401774ff59cb15aafc4a5e6e7425b04996332b253d2815130b43932b138f999';
 
     useEffect(() => {
         const fetchData = async () => {
